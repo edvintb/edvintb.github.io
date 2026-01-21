@@ -37,12 +37,7 @@ body {
 
 /* Header/Navigation */
 header {
-  padding: 2rem 0;
-  position: fixed;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(5px);
-  z-index: 1000;
+  padding: 5rem 0 2rem;
 }
 
 nav {
@@ -151,7 +146,7 @@ section {
 
 /* Content area */
 .content-area {
-  padding: 5rem 0;
+  padding: 2rem 0 5rem;
   min-height: calc(100vh - 200px);
 }
 
@@ -164,6 +159,11 @@ section {
 
 .error {
   color: #e74c3c;
+}
+
+.tbd {
+  color: var(--color-secondary);
+  font-style: italic;
 }
 
 .tab-content {

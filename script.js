@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
         // Load initial content
         console.log('Loading initial content...');
-        loadContent('writing');
+        loadContent('resume');
 
     } catch (error) {
         console.error('Error initializing template:', error);
