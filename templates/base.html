@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edvin Tewolde Berhane</title>
+    <meta name="description" content="Personal website of Edvin Tewolde Berhane">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="components/writing.css">
+    <link rel="stylesheet" href="components/resume.css">
+    <link rel="stylesheet" href="components/about.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="template.js" defer></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="profile-container">
+                    <img src="assets/self.jpeg" alt="Edvin Tewolde Berhane" class="profile-picture">
+                    <div class="social-icons">
+                        <a href="https://github.com/edvintb" target="_blank" class="social-icon">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/edvin-t-berhane-04632a198/" target="_blank" class="social-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://x.com/edvintb" target="_blank" class="social-icon">
+                            <img src="assets/icons/x-logo.svg" alt="X (formerly Twitter)" class="x-logo">
+                        </a>
+                    </div>
+                </div>
+                <div class="tabs">
+                    <button class="tab-button active" data-tab="writing">Writing</button>
+                    <button class="tab-button" data-tab="resume">Resume</button>
+                    <button class="tab-button" data-tab="about">About</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Edvin Tewolde Berhane</h1>
+                    <p class="subtitle">Welcome to my corner of the internet</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-area">
+            <div class="container">
+                <div id="content-container">
+                    {{ content }}
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <!-- Footer content can be added here -->
+        </div>
+    </footer>
+</body>
+</html>

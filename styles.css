@@ -1,0 +1,219 @@
+/* Modern CSS Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom properties */
+:root {
+  --color-primary: #2d3436;
+  --color-secondary: #636e72;
+  --color-background: #ffffff;
+  --color-accent: #0984e3;
+  --font-main: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  line-height: 1.6;
+  color: var(--color-primary);
+  background-color: var(--color-background);
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Header/Navigation */
+header {
+  padding: 2rem 0;
+  position: fixed;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+}
+
+nav {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.social-icon {
+  color: black;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.x-logo {
+  width: 24px;
+  height: 24px;
+}
+
+.social-icon:hover {
+  transform: translateY(-2px);
+}
+
+.profile-picture {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.profile-picture:hover {
+  transform: scale(1.1);
+}
+
+/* Hero section */
+.hero {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  padding: 4rem 0;
+}
+
+.hero-content {
+  max-width: 800px;
+}
+
+h1 {
+  font-size: 3.5rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  color: var(--color-secondary);
+  margin-bottom: 2rem;
+}
+
+/* Sections */
+section {
+  padding: 5rem 0;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 2rem;
+  margin-left: auto;
+}
+
+.tab-button {
+  padding: 0.5rem 0;
+  border: none;
+  background: none;
+  font-size: 1rem;
+  color: var(--color-secondary);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.tab-button:hover {
+  color: var(--color-primary);
+}
+
+.tab-button.active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-accent);
+}
+
+/* Content area */
+.content-area {
+  padding: 5rem 0;
+  min-height: calc(100vh - 200px);
+}
+
+/* Loading and error states */
+.loading, .error {
+  padding: 2rem;
+  text-align: center;
+  color: var(--color-secondary);
+}
+
+.error {
+  color: #e74c3c;
+}
+
+.tab-content {
+  display: none;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.tab-content h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--color-primary);
+}
+
+/* Typography */
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+p {
+  margin-bottom: 1.5rem;
+}
+
+/* Links */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--color-primary);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+  }
+
+  section {
+    padding: 3rem 0;
+  }
+}
