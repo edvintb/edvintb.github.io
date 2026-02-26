@@ -1,3 +1,13 @@
+.writing-piece-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.writing-piece-link:hover {
+    color: inherit;
+}
+
 .writing-piece {
     margin-bottom: 3rem;
 }
@@ -8,18 +18,32 @@
 
 .writing-piece h3 {
     font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
     color: var(--color-primary);
 }
 
-.writing-piece .date {
-    color: var(--color-secondary);
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
+.writing-piece-link:hover h3 {
+    color: var(--color-accent);
 }
 
-.writing-piece p {
+.writing-preview {
+    position: relative;
+    max-height: 4.5em;
+    overflow: hidden;
+}
+
+.writing-preview p {
     line-height: 1.8;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
     color: var(--color-secondary);
+}
+
+.writing-preview-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3em;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
 }
