@@ -101,9 +101,12 @@ header {
 }
 
 .writing-section h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
-  color: var(--color-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-secondary);
+  margin-bottom: 1rem;
 }
 
 /* Typography */
