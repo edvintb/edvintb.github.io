@@ -7,13 +7,48 @@
     <meta name="description" content="Personal website of Edvin Tewolde Berhane">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="components/writing.css">
-    <link rel="stylesheet" href="components/resume.css">
-    <link rel="stylesheet" href="components/about.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="template.js" defer></script>
-    <script src="script.js" defer></script>
 </head>
 <body>
-    <div id="app">Loading...</div>
+    <div class="container">
+        <header>
+            <div class="profile-container">
+                <div class="profile-photo">
+                    <img src="assets/self.jpeg" alt="Edvin Tewolde Berhane" class="profile-picture">
+                    <div class="social-icons">
+                        <a href="https://github.com/edvintb" target="_blank" class="social-icon">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/edvin-t-berhane-04632a198/" target="_blank" class="social-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://x.com/edvintb" target="_blank" class="social-icon">
+                            <img src="assets/icons/x-logo.svg" alt="X (formerly Twitter)" class="x-logo">
+                        </a>
+                    </div>
+                </div>
+                <div class="bio">
+                    <h1>Edvin T. Berhane</h1>
+                    <p>Currently computer vision research at Reve AI. Previously at Augment Code. Trained in physics, computer science, and statistics at Harvard College.  Originally from Sweden.</p>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="writing-section">
+                <h2>Writing</h2>
+                <a href="writing/ai-impacts-on-software-power.html" class="writing-piece-link">
+                    <div class="writing-piece">
+                        <h3>AI Impacts on Software Power</h3>
+                        <p class="writing-date">February 2025</p>
+                        <div class="writing-preview">
+                            <p>Persistent differential returns are driven by power. Power comes in seven forms: scale economies, network economies, switching costs, cornered resources, counter positioning, branding, and process power. For anyone familiar with Hamilton Helmer, this will sound familiar. His "seven powers" framework is a classic starting point for thinking about businesses...</p>
+                            <div class="writing-preview-fade"></div>
+                        </div>
+                    </div>
+                </a>
+            </section>
+        </main>
+    </div>
 </body>
 </html>

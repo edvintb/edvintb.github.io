@@ -1,9 +1,0 @@
-.tab-content p {
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
-    color: var(--color-secondary);
-}
-
-.tab-content p:last-child {
-    margin-bottom: 0;
-}
