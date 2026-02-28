@@ -41,17 +41,17 @@ header {
 }
 
 .profile-container {
-  display: flex;
-  align-items: flex-start;
-  gap: 2rem;
+  overflow: hidden;
 }
 
 .profile-photo {
+  float: left;
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex-shrink: 0;
   gap: 0.75rem;
+  margin-right: 2rem;
+  margin-bottom: 1rem;
 }
 
 .profile-picture {
@@ -137,8 +137,17 @@ a:hover {
 }
 
 /* Responsive design */
-@media (max-width: 768px) {
-  .bio h1 {
-    font-size: 1.5rem;
+@media (max-width: 360px) {
+  .profile-photo {
+    float: none;
+    margin: 0 auto 1rem;
+  }
+
+  .bio {
+    text-align: center;
+  }
+
+  .social-icons {
+    justify-content: center;
   }
 }
