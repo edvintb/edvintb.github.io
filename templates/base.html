@@ -7,20 +7,16 @@
     <meta name="description" content="Personal website of Edvin Tewolde Berhane">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="components/writing.css">
-    <link rel="stylesheet" href="components/resume.css">
-    <link rel="stylesheet" href="components/about.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="template.js" defer></script>
-    <script src="script.js" defer></script>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <nav>
-                <div class="profile-container">
-                    <a href="/">
-                        <img src="assets/self.jpeg" alt="Edvin Tewolde Berhane" class="profile-picture">
-                    </a>
+    <div class="container">
+        <header>
+            <div class="profile-container">
+                <img src="assets/self.jpeg" alt="Edvin Tewolde Berhane" class="profile-picture">
+                <div class="bio">
+                    <h1>Edvin T. Berhane</h1>
+                    <p>Research engineer at Reve AI, building large-scale data pipelines and training vision models. Previously fine-tuned LLMs for code editing at Augment Code. I studied physics, computer science, and statistics at Harvard, and did research in computational materials science. Originally from Sweden.</p>
                     <div class="social-icons">
                         <a href="https://github.com/edvintb" target="_blank" class="social-icon">
                             <i class="fab fa-github"></i>
@@ -33,29 +29,20 @@
                         </a>
                     </div>
                 </div>
-                <div class="tabs">
-                    <button class="tab-button active" data-tab="writing">Writing</button>
-                    <button class="tab-button" data-tab="resume">Resume</button>
-                    <button class="tab-button" data-tab="about">About</button>
-                </div>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <section class="content-area">
-            <div class="container">
-                <div id="content-container">
-                    {{ content }}
-                </div>
             </div>
-        </section>
-    </main>
+        </header>
 
-    <footer>
-        <div class="container">
-            <!-- Footer content can be added here -->
-        </div>
-    </footer>
+        <main>
+            <section class="writing-section">
+                <h2>Writing</h2>
+                <a href="writing/ai-impacts-on-software-power.html" class="writing-piece-link">
+                    <div class="writing-piece">
+                        <h3>AI Impacts on Software Power</h3>
+                        <p class="writing-date">February 2025</p>
+                    </div>
+                </a>
+            </section>
+        </main>
+    </div>
 </body>
 </html>
