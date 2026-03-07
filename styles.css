@@ -107,6 +107,7 @@ header {
   letter-spacing: 0.08em;
   color: var(--color-secondary);
   margin-bottom: 1rem;
+  clear: both;
 }
 
 /* Typography */
