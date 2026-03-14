@@ -65,6 +65,16 @@
     color: var(--color-accent);
 }
 
+.pub-title-link {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.pub-title-link:hover {
+    color: var(--color-accent);
+}
+
 .pub-card {
     overflow: hidden;
     margin-bottom: 1.5rem;
