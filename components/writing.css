@@ -109,3 +109,13 @@
     color: var(--color-secondary);
     margin-bottom: 0;
 }
+
+@media (max-width: 600px) {
+    .pub-cover {
+        float: none;
+        width: 100%;
+        max-width: 280px;
+        margin-right: 0;
+        margin-bottom: 0.75rem;
+    }
+}

@@ -138,7 +138,11 @@ a:hover {
 }
 
 /* Responsive design */
-@media (max-width: 360px) {
+@media (max-width: 600px) {
+  .container {
+    padding: 0 1rem;
+  }
+
   .profile-photo {
     float: none;
     margin: 0 auto 1rem;
