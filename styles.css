@@ -110,6 +110,35 @@ header {
   clear: both;
 }
 
+/* Aspirational writing list */
+.aspirational-list {
+  list-style: none;
+  columns: 2;
+  column-gap: 2rem;
+}
+
+.aspirational-list li {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+  padding: 0.4rem 0;
+  break-inside: avoid;
+}
+
+.aspirational-desc {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: normal;
+  opacity: 0.7;
+  margin-top: 0.1rem;
+}
+
+@media (max-width: 600px) {
+  .aspirational-list {
+    columns: 1;
+  }
+}
+
 /* Typography */
 p {
   margin-bottom: 1.5rem;
