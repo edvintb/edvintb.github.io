@@ -1,0 +1,7 @@
+coding/
+**/__pycache__/
+**/.venv/
+.claude/
+CLAUDE.md
+writing/latex-writing/
+ideas.md

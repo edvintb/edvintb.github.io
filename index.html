@@ -8,6 +8,13 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="components/writing.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        MathJax = {
+            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 </head>
 <body>
     <div class="container">
@@ -37,6 +44,16 @@
         <main>
             <section class="writing-section">
                 <h2>Writing</h2>
+                <a href="writing/who-samples-the-predictor.html" class="writing-piece-link">
+                    <div class="writing-piece">
+                        <h3>Who Samples the Predictors?</h3>
+                        <p class="writing-date">May 2026</p>
+                        <div class="writing-preview">
+                            <p>In modern ML, generation is synonymous with sampling. To sample from a distribution $p$, there are two options: measure a physical process which, due to unaccounted variations or fundamental uncertainty, generates measurements distributed according to $p$; or sample a different distribution $q$ and use a function to map samples from $q$ into samples from $p$. A sample requires two things: randomness and structure. In option one, the physical process provides both. In option two, the process behind $q$ provides the randomness and the external function imposes the structure...</p>
+                            <div class="writing-preview-fade"></div>
+                        </div>
+                    </div>
+                </a>
                 <a href="writing/model-maker-moats.html" class="writing-piece-link">
                     <div class="writing-piece">
                         <h3>Model Maker Moats</h3>
@@ -86,6 +103,18 @@
                     <!-- <li>Sand to Token
                         <span class="aspirational-desc">The full physical stack from silicon to language</span>
                     </li> -->
+                    <!-- Research ideas:
+                    Train diffusion models with re-circulation? why did re-circulation fall out of favor?
+                    Linear prediction of rotation parameters.
+                        Perhaps apply to something simpler than language modeling initially...
+                        Some clean vector-to-vector mapping? MNIST?
+
+                        By captioning, we are effectively creating lower-dim representations of images. We are really hacking our way around with language models. It's basically like learning a code. A code that goes through a text-encoder to become some meaningful entity.
+                        User intent has to be expressed to a model somehow...
+
+                        We can check how well we are fitting a dist via an eval...
+                     
+                     -->
                 </ul>
             </section>
 

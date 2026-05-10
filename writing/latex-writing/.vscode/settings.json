@@ -1,0 +1,20 @@
+{
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.synctex.afterBuild.enabled": true,
+  "latex-workshop.latex.autoClean.run": "onBuilt",
+  "latex-workshop.message.update.show": false,
+
+  "[latex]": {
+    "editor.wordWrap": "on",
+    "editor.formatOnSave": false,
+    "editor.quickSuggestions": {
+      "other": "on",
+      "comments": "off",
+      "strings": "off"
+    }
+  },
+
+  "ltex.language": "en-US",
+  "ltex.enabled": ["latex", "markdown"]
+}

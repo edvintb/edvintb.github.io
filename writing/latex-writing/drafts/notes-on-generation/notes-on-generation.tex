@@ -1,0 +1,44 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper, margin=1.25in]{geometry}
+\usepackage{microtype}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathtools}
+\usepackage{parskip}
+\usepackage[hidelinks]{hyperref}
+\usepackage{libertinus}
+
+\title{Notes on Generation}
+\author{Edvin Tewoldeberhane}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+What does it mean to ``generate''? I think any function can be described as ``generative''. Computing a function on an input generates an output. In probabilistic modeling, we make a distinction between generative and discriminative models. When we model $p(x)$, it's a generative model. When we model $p(y\mid x)$, it's a discriminative model. This is an easy rule to memorize and convert into the generative/discriminative jargon. But it's an arbitrary line to draw. Both generative and discriminative models are deterministic functions that transform inputs into outputs. If we want the output to be random, we have to inject random inputs. 
+
+The arbitrariness of the conditioning bar\dots
+
+generation is casted as sampling from the data distribution. The only way we know how to sample a given distribution is to convert samples from another distribution into it. all we need is the conversion function. as it turns out, this conversion can be very complicated. -- to get a handle on this, we assume that the overall map is a composition of other maps. what exactly is the intuition for why this is a simplification?
+
+
+Fortunately, deep learning has showed us an effective way to deal with complicated maps: composition. Linear transforms composed with simple activations can learn very complicated functions. One can gain intuition behind this by thinking about the number of piece-wise linear maps that can be expressed\dots.
+
+Supervised learning is the most effective way to learn a map. To do supervised learning, we need a supervision signal for each of the maps.
+
+Parameter sharing\dots
+
+Dedicate parameters to finer-grained sampling or more composition?
+
+Pre-training\dots
+
+Also an argument for why free markets work so well? Composited functions?
+
+Image making in seven paradigms...
+
+What is the fundamental flow here?
+
+We're looking for a function. Either we can code it directly or code an algorithm to find it. Find it. There are (at least) seven computational level one paradigms to pick from. Probabilistic modeling. 
+
+
+\end{document}

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who Samples the Predictors? - Edvin T. Berhane</title>
+    <meta name="description" content="Discriminative and generative models share a single equation. The real difference is who samples the predictors.">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        MathJax = {
+            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+    <style>
+        .article-header {
+            padding: 4rem 0 2rem;
+        }
+
+        .article-header a {
+            color: var(--color-secondary);
+            font-size: 0.95rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: color 0.3s ease;
+        }
+
+        .article-header a:hover {
+            color: var(--color-primary);
+        }
+
+        .article-layout {
+            position: relative;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .article-outline {
+            position: fixed;
+            width: 180px;
+        }
+
+        .article-outline .outline-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding-left: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .article-outline ul {
+            list-style: none;
+            border-left: 2px solid #e8e8e8;
+        }
+
+        .article-outline li a {
+            display: block;
+            padding: 0.4rem 0 0.4rem 1rem;
+            font-size: 0.8rem;
+            color: var(--color-secondary);
+            text-decoration: none;
+            border-left: 2px solid transparent;
+            margin-left: -2px;
+            transition: all 0.2s ease;
+            line-height: 1.4;
+        }
+
+        .article-outline li a:hover {
+            color: var(--color-primary);
+        }
+
+        .article-outline li a.active {
+            color: var(--color-primary);
+            border-left-color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        .article-body {
+            padding: 0 0 6rem;
+        }
+
+        @media (max-width: 1150px) {
+            .article-outline {
+                display: none;
+            }
+        }
+
+        .article-body h1 {
+            font-size: 2.4rem;
+            line-height: 1.25;
+            margin-bottom: 0.5rem;
+        }
+
+        .article-date {
+            color: var(--color-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .article-body h2 {
+            font-size: 1.4rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-body p {
+            line-height: 1.8;
+            color: var(--color-primary);
+            margin-bottom: 1.25rem;
+        }
+
+        .article-body ol {
+            line-height: 1.8;
+            color: var(--color-primary);
+            margin-bottom: 1.25rem;
+            padding-left: 1.5rem;
+        }
+
+        .article-body ol li {
+            margin-bottom: 0.75rem;
+        }
+
+        .article-body a {
+            color: var(--color-accent);
+            text-decoration: underline;
+            text-decoration-color: rgba(9, 132, 227, 0.3);
+            text-underline-offset: 2px;
+        }
+
+        .article-body a:hover {
+            text-decoration-color: var(--color-accent);
+        }
+
+        @media (max-width: 768px) {
+            .article-body h1 {
+                font-size: 1.8rem;
+            }
+
+            .article-body h2 {
+                font-size: 1.25rem;
+            }
+
+            .article-header {
+                padding: 2rem 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="article-header">
+        <div class="container">
+            <a href="/">&larr; Back</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+          <div class="article-layout">
+            <nav class="article-outline">
+                <ul>
+                    <li><a href="#article-top" class="active">Who Samples the Predictors?</a></li>
+                    <li><a href="#sampling">Sampling a Distribution</a></li>
+                    <li><a href="#discriminative">Discriminative Models</a></li>
+                    <li><a href="#same-equation">Generative models</a></li>
+                    <li><a href="#pairing">The Pairing Problem</a></li>
+                    <li><a href="#conclusion">Conclusion</a></li>
+                </ul>
+            </nav>
+            <article class="article-body">
+                <h1 id="article-top">Who Samples the Predictors?</h1>
+                <p class="article-date">May 2026</p>
+
+                <!-- <p>Suppose we have $N$ observations $\{d_i\}_{i=1}^N$. We assume each $d_i$ is an i.i.d. sample from some distribution $p_{\text{data}}$. Our goal is to generate new samples from $p_{\text{data}}$.</p> -->
+
+                <!-- <h2 id="sampling">Sampling a Distribution</h2> -->
+
+                <p>In modern ML, generation is synonymous with sampling. To sample from a distribution $p$, there are two options:</p>
+
+                <ol>
+                    <li>Measure a physical process which, due to unaccounted variations or fundamental uncertainty, generates measurements distributed according to $p$. Radioactive decay, for example, is fundamentally uncertain and occurs according to the exponential distribution.</li>
+                    <li>Sample a different distribution $q$ and use a function to map samples from $q$ into samples from $p$. Such a function is guaranteed to exist for all continuous distributions $p$ and $q$.</li>
+                </ol>
+
+                <p>A sample requires two things: randomness and structure. In option one, the physical process provides both. In option two, the process behind $q$ provides the randomness and the external function imposes the structure. We only have two options because there are only two ways to combine randomness and structure.</p>
+
+                <p>For most interesting distributions, option one is synonymous with labor. Say we want to sample from the distribution of Monet's paintings. The physical process that generates such samples is Claude Monet himself. The only way to sample this process is to give Monet food, wait for him to execute, and observe his outputs. Unfortunately, the Monet process stopped working almost 100 years ago. Fortunately, we are starting to find functions that can map simple samples into things like Monet's paintings.</p>
+
+                <p>With such functions, we can mass-produce the results of rare, slow, or expensive physical processes. Not only Monet's paintings, but also code, math, music, and movies. Everything can be viewed as a sample from some distribution. Anything that is a sample can be generated by converting from one distribution into another. In this essay, we will see how the framework of sampling and conversion underlies both discriminative and generative models.</p>
+
+                <h2 id="discriminative">Discriminative Models</h2>
+
+                <p>The first successes in AI were discriminative models. Discriminative models are based on splitting individual data points into predictors and targets. The predictors are typically denoted by $x_i$ and the targets by $y_i$. It is worth emphasizing that $x_i$ and $y_i$ are both part of the same observation $d_i$. The split into predictors and targets is an arbitrary decision imposed on the observations.</p>
+
+                <p>Usually, the split reflects some goal we are trying to achieve. For example, if an observation $d_i$ consists of an audio recording of a speech and its text transcript, we can use the audio to predict the text (speech recognition), or we can use the text to predict the audio (text-to-speech). It is the same observation, just a different direction of discrimination.</p>
+
+                <h2 id="same-equation">Generative models</h2>
+
+                <p>Recent models are referred to as generative. How are generative models different from discriminative ones? Both are functions that map inputs to outputs. We can even write both in the same general form:</p>
+
+                <p style="text-align: center;">$y_i = f_{\theta}(x_i) + \epsilon$</p>
+
+                <p>where $x_i$ is our predictor, $y_i$ is our target, $f_{\theta}$ is a function parametrized by $\theta$, and $\epsilon$ is some random value. The difference lies in the source of the predictor. Generative models use computer hardware to sample predictors. Discriminative models require measuring external processes.</p>
+
+                <p>Both convert samples from one distribution into another, but the input distributions are different. Typically, discriminative inputs are sampled from complex real-world distributions, like the sound of a person's voice or the pixels in an image. Generative inputs are computer-generated random numbers. Usually, this is described as &ldquo;discriminative models don't model the data distribution $P(X)$, only the conditional distribution $P(Y \mid X)$.&rdquo; While accurate, I never found this description satisfactory. We are always generating an output based on an input. Focusing on sampling and conversion emphasizes that both discriminative and generative models are maps between distributions.</p>
+
+                <h2 id="pairing">The Pairing Problem</h2>
+
+                <p>Why do we want models that internally sample inputs? Let's return to Monet. An observation of Monet's water lilies consists of millions of pixels. Like any observation, it can be viewed as a sample from a million-dimensional $p_{\text{data}}$. For a painting, there is no natural separation into &ldquo;predictor pixels&rdquo; and &ldquo;target pixels.&rdquo; How do we generate new samples in this scenario? We can still use Monet's pixels as targets, but we have to sample the predictor ourselves. To illustrate, let's sample a made-up predictor $z_i$ from some simple distribution $P_Z$ and apply the same equation:</p>
+
+                <p style="text-align: center;">$y_i = f_{\theta}(z_i) + \epsilon.$</p>
+
+                <p>Unfortunately, a simple random pairing between sampled predictors $z_i$ and observations $y_i$ will not work. A random pairing definitionally makes the predictors independent of the observations. This independence destroys generalization. Independence means there is no pattern for $f_{\theta}$ to pick up. Without a pattern, $f_{\theta}$ has no choice but to learn a lookup table. If $f_{\theta}$ lacks the flexibility to learn a full lookup, the loss minimizer becomes some average over the observations. There is no opportunity for generalization because there is no structure in the data.</p>
+
+                <p>In discriminative models, the right pairing is provided when we condition within an observation. For generative models, creating the right pairings is a fundamental challenge. VAEs use an encoder to connect the predictors to targets during training. Normalizing flows constrain the hypothesis space to bijections and thereby implicitly force a structured pairing. Diffusion and flow models use a slightly noised version of the target as the predictor in the pair. GANs allow the pairings to be random, but suffer from training instability and mode collapse as a consequence. Autoregressive approaches entirely avoid sampling predictors during training and instead pair targets with previous parts of the same observation.</p>
+
+                <h2 id="conclusion">Conclusion</h2>
+
+                <p>Generation can be viewed as sampling. To sample, we need randomness and structure. Machine learning methods let us find functions that provide interesting structure to random samples. Discriminative models force us to sample predictors externally. Generative models do all the sampling internally. They both map samples from one distribution into another. Internal sampling requires a structured pairing between predictors and targets. This complicates generative models compared to discriminative ones.</p>
+
+                <p>The purpose of this piece was to anchor discriminative and generative models to the same probabilistic fundamentals. I find it to be an interesting perspective that is often overlooked. In the next blog post, we will see how much the pairing can impact the difficulty of the learning task by exploring a simple $k$-NN model.</p>
+
+                <p style="margin-top: 2rem; color: var(--color-secondary); font-style: italic;">Edvin T. Berhane</p>
+            </article>
+          </div>
+        </div>
+    </main>
+    <script>
+        const outline = document.querySelector('.article-outline');
+        const article = document.querySelector('.article-body');
+        const title = document.querySelector('#article-top');
+        function positionOutline() {
+            const articleRect = article.getBoundingClientRect();
+            const titleRect = title.getBoundingClientRect();
+            outline.style.right = (window.innerWidth - articleRect.left + 32) + 'px';
+            outline.style.top = titleRect.top + 'px';
+        }
+        positionOutline();
+        window.addEventListener('resize', positionOutline);
+
+        const sections = document.querySelectorAll('.article-body h1[id], .article-body h2[id]');
+        const links = document.querySelectorAll('.article-outline a');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    links.forEach(link => link.classList.remove('active'));
+                    const active = document.querySelector(`.article-outline a[href="#${entry.target.id}"]`);
+                    if (active) active.classList.add('active');
+                }
+            });
+        }, { rootMargin: '0px 0px -70% 0px' });
+        sections.forEach(section => observer.observe(section));
+    </script>
+</body>
+</html>
