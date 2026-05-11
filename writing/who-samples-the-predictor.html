@@ -176,7 +176,7 @@
                 <h1 id="article-top">Who Samples the Predictors?</h1>
                 <p class="article-date">May 2026</p>
 
-                <!-- <p>Suppose we have $N$ observations $\{d_i\}_{i=1}^N$. We assume each $d_i$ is an i.i.d. sample from some distribution $p_{\text{data}}$. Our goal is to generate new samples from $p_{\text{data}}$.</p> -->
+                <!-- <p>Suppose we have $N$ observations $\{d\}_{i=1}^N$. We assume each $d$ is an i.i.d. sample from some distribution $p_{\text{data}}$. Our goal is to generate new samples from $p_{\text{data}}$.</p> -->
 
                 <!-- <h2 id="sampling">Sampling a Distribution</h2> -->
 
@@ -195,27 +195,27 @@
 
                 <h2 id="discriminative">Discriminative Models</h2>
 
-                <p>The first successes in AI were discriminative models. Discriminative models are based on splitting individual data points into predictors and targets. The predictors are typically denoted by $x_i$ and the targets by $y_i$. It is worth emphasizing that $x_i$ and $y_i$ are both part of the same observation $d_i$. The split into predictors and targets is an arbitrary decision imposed on the observations.</p>
+                <p>The first successes in AI were discriminative models. Discriminative models are based on splitting individual data points into predictors and targets. The predictors are typically denoted by $x$ and the targets by $y$. It is worth emphasizing that $x$ and $y$ are both part of the same observation $d$. The split into predictors and targets is an arbitrary decision imposed on the observations.</p>
 
-                <p>Usually, the split reflects some goal we are trying to achieve. For example, if an observation $d_i$ consists of an audio recording of a speech and its text transcript, we can use the audio to predict the text (speech recognition), or we can use the text to predict the audio (text-to-speech). It is the same observation, just a different direction of discrimination.</p>
+                <p>Usually, the split reflects some goal we are trying to achieve. For example, if an observation $d$ consists of an audio recording of a speech and its text transcript, we can use the audio to predict the text (speech recognition), or we can use the text to predict the audio (text-to-speech). It is the same observation, just a different direction of discrimination.</p>
 
                 <h2 id="same-equation">Generative models</h2>
 
                 <p>Recent models are referred to as generative. How are generative models different from discriminative ones? Both are functions that map inputs to outputs. We can even write both in the same general form:</p>
 
-                <p style="text-align: center;">$y_i = f_{\theta}(x_i) + \epsilon$</p>
+                <p style="text-align: center;">$y = f_{\theta}(x) + \epsilon$</p>
 
-                <p>where $x_i$ is our predictor, $y_i$ is our target, $f_{\theta}$ is a function parametrized by $\theta$, and $\epsilon$ is some random value. The difference lies in the source of the predictor. Generative models use computer hardware to sample predictors. Discriminative models require measuring external processes.</p>
+                <p>where $x$ is our predictor, $y$ is our target, $f_{\theta}$ is a function parametrized by $\theta$, and $\epsilon$ is some random value. The difference lies in the source of the predictor. Generative models use computer hardware to sample predictors. Discriminative models require measuring external processes.</p>
 
                 <p>Both convert samples from one distribution into another, but the input distributions are different. Typically, discriminative inputs are sampled from complex real-world distributions, like the sound of a person's voice or the pixels in an image. Generative inputs are computer-generated random numbers. Usually, this is described as &ldquo;discriminative models don't model the data distribution $P(X)$, only the conditional distribution $P(Y \mid X)$.&rdquo; While accurate, I never found this description satisfactory. We are always generating an output based on an input. Focusing on sampling and conversion emphasizes that both discriminative and generative models are maps between distributions.</p>
 
                 <h2 id="pairing">The Pairing Problem</h2>
 
-                <p>Why do we want models that internally sample inputs? Let's return to Monet. An observation of Monet's water lilies consists of millions of pixels. Like any observation, it can be viewed as a sample from a million-dimensional $p_{\text{data}}$. For a painting, there is no natural separation into &ldquo;predictor pixels&rdquo; and &ldquo;target pixels.&rdquo; How do we generate new samples in this scenario? We can still use Monet's pixels as targets, but we have to sample the predictor ourselves. To illustrate, let's sample a made-up predictor $z_i$ from some simple distribution $P_Z$ and apply the same equation:</p>
+                <p>Why do we want models that internally sample inputs? Let's return to Monet. An observation of Monet's water lilies consists of millions of pixels. Like any observation, it can be viewed as a sample from a million-dimensional $p_{\text{data}}$. For a painting, there is no natural separation into &ldquo;predictor pixels&rdquo; and &ldquo;target pixels.&rdquo; How do we generate new samples in this scenario? We can still use Monet's pixels as targets, but we have to sample the predictor ourselves. To illustrate, let's sample a made-up predictor $z$ from some simple distribution $P_Z$ and apply the same equation:</p>
 
-                <p style="text-align: center;">$y_i = f_{\theta}(z_i) + \epsilon.$</p>
+                <p style="text-align: center;">$y = f_{\theta}(z) + \epsilon.$</p>
 
-                <p>Unfortunately, a simple random pairing between sampled predictors $z_i$ and observations $y_i$ will not work. A random pairing definitionally makes the predictors independent of the observations. This independence destroys generalization. Independence means there is no pattern for $f_{\theta}$ to pick up. Without a pattern, $f_{\theta}$ has no choice but to learn a lookup table. If $f_{\theta}$ lacks the flexibility to learn a full lookup, the loss minimizer becomes some average over the observations. There is no opportunity for generalization because there is no structure in the data.</p>
+                <p>Unfortunately, a simple random pairing between sampled predictors $z$ and observations $y$ will not work. A random pairing definitionally makes the predictors independent of the observations. This independence destroys generalization. Independence means there is no pattern for $f_{\theta}$ to pick up. Without a pattern, $f_{\theta}$ has no choice but to learn a lookup table. If $f_{\theta}$ lacks the flexibility to learn a full lookup, the loss minimizer becomes some average over the observations. There is no opportunity for generalization because there is no structure in the data.</p>
 
                 <p>In discriminative models, the right pairing is provided when we condition within an observation. For generative models, creating the right pairings is a fundamental challenge. VAEs use an encoder to connect the predictors to targets during training. Normalizing flows constrain the hypothesis space to bijections and thereby implicitly force a structured pairing. Diffusion and flow models use a slightly noised version of the target as the predictor in the pair. GANs allow the pairings to be random, but suffer from training instability and mode collapse as a consequence. Autoregressive approaches entirely avoid sampling predictors during training and instead pair targets with previous parts of the same observation.</p>
 
