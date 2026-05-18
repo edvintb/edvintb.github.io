@@ -1,0 +1,50 @@
+
+There are some insights that simplify thinking about the transformer quite a bit.
+
+[Document the conventions I'm using for parameters]
+
+d_ff = 4 * d_model
+non-gated MLP
+d_q = d_k = d_v = d_model / n_heads
+
+[end of documentation]
+
+1. There are 6 matrices with parameters per layer. They all have similar shapes.
+
+Two for MLP. First has shape d_model -> d_ff, second has shape d_ff -> d_model.
+
+Four for attention. All have shape d_model -> d_model.
+
+Total parameters: 
+
+2 * (d_model * d_ff) + 4 * d_model^2
+
+common case is d_ff = 4 * d_model: 12 * d_model^2
+
+That is it. In a sufficiently large model, this will get you within 1% of non-embedding parameters.
+
+2. Each parameter matrix is multiplied by a each token embedding on each pass.
+
+It is also quite simple how these 6 matrices are used. They all multiply the same things.
+
+The input to a model has shape [batch, sequence, d_model]
+
+It is just a bunch of d_model vectors. Each d_model vector is multiplied by each parameter matrix. Simple as that.
+
+So the total compute for multiplying with all the matrices is 24 * d_model^3 * seq * batch
+
+The compute per token is proportional to 2 * num_params. Arithmetic intensity is directly linear to number of tokens we push through.
+
+3. There is some additional compute to interact across the sequence.
+
+This is what is known as the attention mechanism.
+It does *not* add any parameters.
+The compute is linear in d_model and quadratic in sequence length.
+
+
+
+
+
+
+
+

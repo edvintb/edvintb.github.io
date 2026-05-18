@@ -1,0 +1,145 @@
+\documentclass[11pt,a4paper]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+% Page setup
+\geometry{margin=1in}
+\setlength{\headheight}{13.6pt}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\thepage}
+\lhead{Transformer Accounting}
+
+% Title formatting
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{1em}{}
+
+% Document
+\begin{document}
+
+\title{Transformer Accounting: Simplifying Parameter and Compute Analysis}
+\author{}
+\date{\today}
+\maketitle
+
+\section{Introduction}
+
+There are some insights that simplify thinking about the transformer quite a bit.
+
+\section{Parameter Conventions}
+
+The following conventions are used throughout this analysis:
+
+\begin{align}
+d_{ff} &= 4 \cdot d_{model} \\
+d_q = d_k = d_v &= \frac{d_{model}}{n_{heads}}
+\end{align}
+
+We consider a non-gated MLP architecture.
+
+\section{Parameter Structure}
+
+\subsection{Matrix Organization}
+
+There are 6 matrices with parameters per layer. They all have similar shapes:
+
+\begin{itemize}
+    \item \textbf{Two for MLP:}
+    \begin{itemize}
+        \item First matrix: $d_{model} \rightarrow d_{ff}$
+        \item Second matrix: $d_{ff} \rightarrow d_{model}$
+    \end{itemize}
+    
+    \item \textbf{Four for attention:}
+    \begin{itemize}
+        \item All have shape $d_{model} \rightarrow d_{model}$
+    \end{itemize}
+\end{itemize}
+
+\subsection{Total Parameters}
+
+The total number of parameters per layer is:
+
+\begin{equation}
+\text{Parameters} = 2 \cdot (d_{model} \cdot d_{ff}) + 4 \cdot d_{model}^2
+\end{equation}
+
+For the common case where $d_{ff} = 4 \cdot d_{model}$:
+
+\begin{equation}
+\text{Parameters} = 12 \cdot d_{model}^2
+\end{equation}
+
+In a sufficiently large model, this formula will get you within 1\% of non-embedding parameters.
+
+\section{Computational Analysis}
+
+\subsection{Matrix Multiplication Pattern}
+
+Each parameter matrix is multiplied by each token embedding on each pass. The usage pattern is remarkably simple: all 6 matrices multiply the same inputs.
+
+The input to a model has shape $[\text{batch}, \text{sequence}, d_{model}]$. It consists of $d_{model}$ vectors, where each vector is multiplied by each parameter matrix.
+
+\subsection{Compute Requirements}
+
+The total compute for multiplying with all matrices is:
+
+\begin{equation}
+\text{Compute} = 24 \cdot d_{model}^3 \cdot \text{seq} \cdot \text{batch}
+\end{equation}
+
+The compute per token is proportional to $2 \times \text{num\_params}$. Arithmetic intensity is directly linear to the number of tokens processed.
+
+\section{Attention Mechanism}
+
+There is additional compute required to handle interactions across the sequence, known as the attention mechanism.
+
+Key properties of attention:
+\begin{itemize}
+    \item Does \textbf{not} add any parameters
+    \item Compute is linear in $d_{model}$
+    \item Compute is quadratic in sequence length
+\end{itemize}
+
+\section{Parameter and Compute Summary}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Operation} & \textbf{Parameters} & \textbf{FLOPs per Token} \\
+\hline
+MLP Layer 1 & $d_{model} \times d_{ff}$ & $2d_{model} \times d_{ff}$ \\
+\hline
+MLP Layer 2 & $d_{ff} \times d_{model}$ & $2d_{ff} \times d_{model}$ \\
+\hline
+Attention: Q & $d_{model} \times d_{model}$ & $2d_{model}^2$ \\
+\hline
+Attention: K & $d_{model} \times d_{model}$ & $2d_{model}^2$ \\
+\hline
+Attention: V & $d_{model} \times d_{model}$ & $2d_{model}^2$ \\
+\hline
+Attention: Output & $d_{model} \times d_{model}$ & $2d_{model}^2$ \\
+\hline
+Attention: Scores & — & $2d_{model} \times \text{seq}^2$ \\
+\hline
+\textbf{Total per Layer} & $\mathbf{2d_{model} \times d_{ff} + 4d_{model}^2}$ & $\mathbf{2d_{model}(d_{ff} + 2d_{model}) + 2d_{model} \times \text{seq}^2}$ \\
+\hline
+\textbf{Common Case} & $\mathbf{12d_{model}^2}$ & $\mathbf{24d_{model}^2 + 2d_{model} \times \text{seq}^2}$ \\
+\textbf{($d_{ff} = 4d_{model}$)} & & \\
+\hline
+\end{tabular}
+\caption{Parameter count and compute requirements per transformer layer}
+\end{table}
+
+\end{document}
