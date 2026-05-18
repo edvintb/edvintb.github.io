@@ -1,0 +1,14 @@
+\begin{thebibliography}{1}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Dai and Le(2015)]{dai2015semi}
+Andrew~M. Dai and Quoc~V. Le.
+\newblock Semi-supervised sequence learning.
+\newblock \emph{arXiv preprint arXiv:1511.01432}, Nov 2015.
+\newblock URL \url{https://arxiv.org/abs/1511.01432}.
+
+\end{thebibliography}

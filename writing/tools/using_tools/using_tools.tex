@@ -1,0 +1,117 @@
+\documentclass[12pt]{article}  % Base font size is 12pt
+
+% Commonly used packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[
+    style=ieee,
+    urldate=comp,
+    maxbibnames=99,
+    minbibnames=99,
+    maxcitenames=2,
+    mincitenames=1,
+    sorting=none,
+    backend=biber,
+    giveninits=true,
+    doi=false,
+    isbn=false,
+    url=true,
+    eprint=false
+]{biblatex}
+\usepackage{hyperref}  % Load hyperref last
+\usepackage{tikz}
+\usetikzlibrary{trees, shapes, arrows}
+
+% Add these lines after your other packages
+\usepackage{helvet}  % For Helvetica-like font
+\renewcommand{\familydefault}{\sfdefault}  % Make sans-serif the default
+
+% To make the font even larger, you can scale it:
+\usepackage{anyfontsize}  % Allows any font size
+\renewcommand{\normalsize}{\fontsize{14}{18}\selectfont}  % 14pt font with 18pt line spacing
+
+% Alternative: use the scale option with helvet
+% \usepackage[scaled=1.1]{helvet}  % Scale Helvetica by 110%
+
+% For a more modern sans-serif font, you could use:
+% \usepackage{lmodern}  % Latin Modern
+% \renewcommand{\familydefault}{\sfdefault}
+
+% Or for Source Sans Pro (very readable):
+% \usepackage[default]{sourcesanspro}
+
+% Bibliography customization
+\renewcommand*{\bibfont}{\small}
+\setlength{\bibitemsep}{0.5\baselineskip}
+\DeclareFieldFormat{url}{\url{#1}}
+\DeclareFieldFormat{urldate}{\mkbibparens{accessed #1}}
+
+% Bibliography setup
+\addbibresource{references.bib}
+
+% Document information
+\title{Using tools}
+\author{Edvin T. Berhane}
+\date{\today}
+
+\begin{document}
+
+\section*{Tool use}
+
+Tool use belongs to the long list of traits that were once thought to be uniquely human. It was not until the 1960s, when Jane Goodall observed a chimpanzee using a twig to fish for termites, that our instinctual hubris was yet again contradicted. Since the initial discovery, non-humans primates have been observed using rocks to crack crabs and nuts, twigs to trick termites out of their nests, and leaves to groom and collect water\cite{jg_chimp_tool_use}. Chimpanzees have even been observed to manufacture simple tools (e.g. stripping leaves from a branch) \cite{boesch_chimpanzees_2000}.
+
+Even non-primates have been observed using tools. Elephants use branches to swat away flies and cover up water reservoirs. Dolphins use sponges to protect their beaks while foraging \cite{wiki_tool_use}. It makes sense that tool use would not be exclusively human. Animals also have desires that can be served by leveraging their surroundings. One can easily imagine situations where the cognative capacity cost required for tool use is outweighed by benefits to survival and reproduction, causing the behavior to evolve.
+
+Observing animals forces us to think about what actually counts as a tool. Can any animal interaction with its environment be considered tool use? Is a gaselle a "tool" for a lion to still its hunger? The sentence seems sensical at first glance. But there also seems to be something different about using a twig to trap termites and using your claws to take down a gaselle. 
+
+It seems to me like "tool" is not a property of an object, but rather of an interaction. There are "tools" for getting along with other people. "Tools" for growing vegetables. "Tools" used by chat bots. A person can be used as a "tool" (usually not encouraged). In our day-to-day language, a tool can be basically anything used to achieve an end.
+
+If almost anything can be a tool, what makes some tools better than other? Why do we chose to use the tools we use? The simplest model of human choice is minimize pain and maximize pleasure. Startups are often encouraged to identify "pain points" and make their solution "delightful". But these terms are too general to be practically useful. The real work has to be done in coming up with and weighing concrete sources of pleasure and pain.
+
+What are some sources of pain and pleasure? Money is the first one that comes to mind. Saving money saves pain because money represents resources. Freeing up resources from one place allows them to reduce pain elsewhere. When one business sells a tool to another, money is often the main focus. Either the tool will increase revenue, decrease costs, or both. If the tool does neither, the purchase is unlikely to take place, unless incompetent or corrupt individuals are involved.
+
+Things are more complicated when it comes to individuals. Take buying the latest iPhone as an example. There is no black-and-white calculcus for purchasing and iPhone. In fact, the monetary calculcus can easily be made to show that the purchase should not happen: an iPhone costs money without creating additional income. The same can be said for almost any purchase an individual makes. Individuals don't part with their dollars primarily to immediately save or make money.
+
+Finding non-monetary sources of pleasure and pain in individuals' lives is actually pretty easy. During these first couple weeks of April, millions of Americans file their taxes. Pain. When I want to visit my family, I have to spend more than 24h in airplanes and airports. Pain. If there was a way to avoid filing taxes \footnote{I don't mind \textit{paying} taxes, I just hate \textit{filing} taxes.} or teleport to where I want to go, I would happily part with many of my dollars for the resulting reduction in pain.
+
+The tricky part is coming up with cost-effective and feasible improvements to sources of pain. I \textit{could} pay an accountant to file my taxes for me, but I decided (perhaps for the last time) that the benefit of doing so would be smaller than whatever I could alternatively spend that money on. I did, however, decide to spend money on TurboTax instead of filling out the forms myself. A smaller reduction in pain, but at a smaller cost. Both TurboTax and the hypothetical accountant competed with every other product (including one another) I could have chosen to spend those dollars on. TurboTax won, the accountant did not. 
+
+Imagine a frontier of spending. I shift my dollars around along this frontier to maximize the value I'm getting. Everyone does the same. Where on this frontier do the future opportunities lie? The reductions in pain available at a cheap enough cost to shift dollars away from how they're currently being spent.
+
+It's hard to come up with general rules around exploring this frontier. It's a complex landscape that shifts over time. However, I've come to think that the impact of improved design and user experience is often undervalued. How many billions of dollars spent on Apple products is because of superior design and UX? Some other recent success centered around design and UX are Superhuman, Wiz, Cursor, and Arc.
+
+After all, a tool is defined by the interaction. Figure out some clever way to tie things back to the talk about "everything is a tool"...
+
+The complex and often counterintutive findings on the frontier are 
+
+Some startups grow by giving away \$1 for 50¢. While quickly reaching a large scale can be a path to defensible profits down the line, it is far from always the case. Ride-sharing and micro-mobility...
+
+Are there distortions from efficiency/markets? 
+\printbibliography
+
+Of course, every business is made up of individuals. Every decision is a mix of monetary and non-monetary considerations. When corporate video calls are laggy, there is a sense of frustration that goes beyond the monetary impact of the lag. Or perhaps the monetary impact comes mainly from the frustration caused by the lag instead of the lag itself. Decisions are always made by individuals, and individuals always come with non-monetary considerations.
+
+Questions: What makes something a "tool" vs a "system"? What makes something a "system" vs. an "intelligent system"? What makes something an artificially intelligent system? Why are some problems we want to solve in the realm of "AI" and others not? What distinction makes sense to draw? What is a "machine", "system", "tool"? Many tools have as their main purpose the creation of other tools. Think SaaS product or litography machines. 
+
+Tool is defined by the interaction. It's not something that is inherent in the object. Some objects are designed to be used as tools (and it could reasonably be said that they "are" tools"), but really anything can be a tool. It's interesting to think about what constitutes a tool and what doesn't. 
+
+Methods for achieving our desires. Tools enable those methods. For simplicity, we'll consider desires as fixed, even though they are in reality shaped by the societies which aim to fulfill them.
+
+Tool is defined by the interaction. It's not something that is inherent in the object. Some objects are designed to be used as tools (and it could reasonably be said that they "are" tools"), but really anything can be a tool. It's interesting to think about what constitutes a tool and what doesn't. 
+
+\textbf{Further topics}
+
+1. Making tools
+We figured out how to form the electromagnetic field into useful patterns. We combine materials to shape these fields into patterns that serve our purposes.
+2. Making profit
+3. Using profit
+4. The never-ending frontier of problems.Think about all the things that are broken. All the bad teachers out there. All the potholes. All the disease, all the hunger. The wars and the malnourishment. All the soul-killing jobs and crushed dreams. How can anyone say that we don't need to keep improving? Not all problems are, of course, feasible to tackle at the moment. There is some pain without cost-effecitve (or even effective) solutions. Think Alzheimers.
+
+Why are people depressed? Why do they kill themselves? Why can't we understand ourselves better, or speak more frankly with one another? History is just beginning. 
+
+There is an endless long tail of use cases. I could for example really use a direct flight from San Francisco to Luleå.
+
+\end{document}

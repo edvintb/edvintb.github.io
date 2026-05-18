@@ -1,0 +1,15 @@
+{
+    "editor.wordWrap": "on",
+    "editor.lineNumbers": "relative",  // if you use relative numbers
+//     "vim.wordWrap": true,
+//     "vim.normalModeKeyBindingsNonRecursive": [
+//     {
+//         "before": ["j"],
+//         "after": ["g", "j"]
+//     },
+//     {
+//         "before": ["k"],
+//         "after": ["g", "k"]
+//     }
+// ]
+}

@@ -1,0 +1,65 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{mathpazo}  % Palatino font, similar to Medium's style
+\usepackage{setspace}
+\usepackage{microtype} % Better typography
+\usepackage{natbib}    % For citations
+
+% Set margins to be more Medium-like
+\geometry{
+    top=2cm,
+    bottom=2cm,
+    left=2cm,
+    right=2cm
+}
+
+% Title format
+\titleformat{\section}
+    {\huge\bfseries}
+    {}
+    {0em}
+    {}[\vspace{1ex}]
+
+\titleformat{\subsection}
+    {\Large\bfseries}
+    {}
+    {0em}
+    {}[\vspace{0.5ex}]
+
+% Paragraph spacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+
+% Document begins
+\begin{document}
+
+\vspace{2em}
+
+\section*{Some NLP History from an outsider's perspective}
+
+It is really fascinating to see how the ideas developed over time. 
+
+[Add some stuff from before this time...]
+
+In 2015, these two guys at Google wrote a paper called ``Semi-supervised Sequence Learning'' \citep{dai2015semi}. This was the introduction of pre-training. I didn't know pre-training was older than the transformer architecture. In this paper, they use recurrent networks (specifically the LSTM flavor) to train a ``sequence autoencoder'' and a ``next token prediction model'' from unlabeled data. They observe that initalizing a later LSTM to the weights learned during the "pre-training" with either of these methods leads to improved performance on a variety of downstream tasks. It seems like no-one had tried before to train a model on some task different from the one they were trying to have the model solve. They talked about it as enabling ``more training'' of the otherwise hard-to-train recurrent networks (vanishing and exploding gradients). 
+
+People were inspired to throw in word representations learned from pre-training 
+
+People started doing calling this multi-task learning and semi-supervised learning. Various approaches were taken -- jointly trained conv nets, separately learning word representaions and using those during the downstream task, etc.
+
+In 2017, the transformer architecture was introduced. This removed the need for recurrence and the bottleneck it had placed on long-range dependencies and parallel training. 
+
+[Do my deep-dive perspective on the attention mechanism. (separate).]
+
+This generalization across tasks really got some dreams of grandeour going. How far can one push this training on the (at the time) unlimited amount of unlabeled data? What if all the tasks we want language models to solve (translation, summarization, question answering, sentiment analysis, etc.) can actually be solved by a single model trained on tons of unlabeled data? Imagine feeling the cusp of a revolution like that.
+
+An important step in the direction was taken by 
+
+The abstracts of the later GPT papers highlight this generalization across tasks very prominently [put some citations from those abstracts here]
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}
